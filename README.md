@@ -5,12 +5,13 @@ Project 3 - Twitter Front-end
 
 ### Features and progress: 
 These are the features that are implemented on this project.
-* Let users login and signup <b>(100%)</b>
-* Let users post a tweet <b>(100%)</b>
-* Allowing users to retweet <b>(100%)</b>
+* Allow user login and signup <b>(100%)</b>
+* Allow user post a tweet <b>(100%)</b>
+* Allow user to retweet a tweet <b>(100%)</b>
+* Allow user to favorite a tweet <b>(100%)</b>
 * Allow user to view other user's timeline <b>(100%)</b>
 * User searches keywords <b>(0%)</b>
-* Let user to logout <b>(100%)</b>
+* Let user logout <b>(100%)</b>
 * <b>Technologies used:</b> Python, Django, sqllite3, HTML, CSS, Twitter Bootstrap
 
 ### Requirements 
