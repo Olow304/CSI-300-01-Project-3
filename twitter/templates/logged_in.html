@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block login %}
+{% with user.username as username %}
+{{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-3 animated fadeIn">
+    <br>
+    <div class="panel panel-default">
+        <div class="jumbotron">
+        </div>
+        <div class="panel-body">
+            <h3><a href="/users/{{ user.username }}">{{ user.username }}</a></h3>
+            <p>
+                <small>tweets</small> <strong>{{ tweet_count }}</strong> -
+                <small><i>followers </i></small> <strong>{{ user.profile.followed_by.count }}</strong> -
+                <small><i>following</i></small> <strong>{{ user.profile.follows.count }}</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 animated fadeIn">
+    <br>
+    <center>
+        <div class="panel panel-info" style="padding: 9px; background: #f5f8fa;">
+            <form action="/submit" method="post">
+                {% for field in tweet_form %}
+                {% csrf_token %}
+                {% render_field field class="form-control" rows="4" placeholder="What’s happening?" %}
+                {% endfor %}
+                <br>
+                <input type="hidden" value="{{ next_url }}" name="next_url">
+                <p class="text-right"><input class="btn btn-primary" type="submit" value="Tweet"></p>
+            </form>
+        </div>
+    </center>
+
+    {% for tweet in tweets %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4><a href="/users/{{ tweet.user.username }}">{{ tweet.user.username }}</a> <small> &middot; {{ tweet.creation_date|timesince }} ago</small></h4>
+            <h2>{{ tweet.content }}</h2>
+            <a href="/users/{{ tweet.user.username }}"> <i class="fa fa-heart"></i></a>
+            <a href="/users/{{ tweet.user.username }}"> <i class="fa fa-retweet"></i></a>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <br>
+</div>
+
+
+
+{% endblock %}

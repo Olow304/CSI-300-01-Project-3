@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block login %}
+{% with user.username as username %}
+{{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-3 animated fadeIn">
+    <br>
+    <div class="panel panel-default">
+        <div class="jumbotron">
+
+        </div>
+        <div class="panel-body">
+            <h3>All Tweets</a></h3>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 animated fadeIn">
+    <br>
+    {% for tweet in tweets %}
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <h4><a href="/users/{{ tweet.user.username }}">{{ tweet.user.username }}</a> <small> &middot; {{ tweet.creation_date|timesince }} ago</small></h4>
+            <h2>{{ tweet.content }}</h2>
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <br>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block login %}
+{% with user.username as username %}
+{{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+
+<div class="col-md-3 animated fadeIn">
+    <br>
+    <div class="panel panel-default">
+        <div class="jumbotron">
+
+        </div>
+        <div class="panel-body">
+            <h3>All users</a></h3>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="col-md-6 animated fadeIn">
+    {% for user, tweet in obj %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h3><a href="/users/{{ user.username }}">{{ user.username }}</a></h3>
+                <p>
+                    <strong>{{ user.tweet_count}}</strong> <small><i>tweets</i> </small>
+                    <strong>{{ user.profile.followed_by.count }}</strong> <small><i>followers<i> </small>
+                    <strong>{{ user.profile.follows.count }}</strong> <small><i>following<i></small>
+                </p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

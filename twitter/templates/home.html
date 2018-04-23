@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block login %}
+
+{% load static %}
+
+<script src="{% static 'js/switch_panels.js' %}"></script>
+
+<div class="jumbotron">
+    <center>
+        <div class="container">
+            <h1>Home</h1>
+        </div>
+    </center>
+</div>
+
+<div class="col-md-4">
+    &nbsp;
+</div>
+
+<div class="col-md-4">
+
+    <center>
+        <div class="panel panel-default login-panel animated fadeIn">
+            <div class="panel-body">
+                <h2>Login</h2>
+                <br>
+                <form action="/login" method="post">{% csrf_token %}
+                    {% for field in auth_form %}
+                    {% render_field field class="form-control" %}
+                    <br>
+                    {% endfor %}
+                    <p><input class="btn btn-primary" type="submit" id="btnLogIn" value="Log In"></p>
+                    <p class="text-muted">Don't have an account? <a id="signup-link" href="#">Register</a></p>
+                </form>
+                <br>
+            </div>
+        </div>
+        <div class="panel panel-default signup-panel animated fadeIn">
+            <div class="panel-body">
+                <h2>Sign up</h2>
+                <br>
+                <form action="/signup" method="post">{% csrf_token %}
+                    {% for field in user_form %}
+                    {% render_field field class="form-control" %}
+                    <br>
+                    {% endfor %}
+                    <p><input class="btn btn-primary" type="submit" value="Create Account"></p>
+                    <p>Already have an account? <a id="login-link" href="#">Sign in</a></p>
+                </form>
+                <br>
+            </div>
+        </div>
+    </center>
+</div>
+</div>
+
+</div>
+
+<div class="col-md-4">
+    &nbsp;
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,2 @@
+conda install pip
+pause

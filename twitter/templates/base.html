@@ -1,0 +1,68 @@
+<head>
+    <title>Twitter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    {% block login %}
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Home</a>         
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a class="btn btn-link" href="/users">Users</a></li>
+                    <li><a class="btn btn-link" href="/tweets">Tweets</a></li>
+                </ul>
+                <form class="navbar-form navbar-right" action="/logout">
+                    <a class="btn btn-link nounderline" href="/users/{{ user }}">Profile</a>
+                    <input class="btn btn-link nounderline" type="submit" id="btnLogOut" value="Log Out">
+                </form>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    {% endblock %}
+
+    {% block flash %}
+
+    {% if auth_form.non_field_errors or user_form.non_field_errors or tweet_form.errors %}
+    <div class="alert alert-danger">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        {{ auth_form.non_field_errors }}
+        {{ user_form.non_field_errors }}
+        {{ tweet_form.content.errors }}
+    </div>
+    {% endif %}
+
+    {% if notice %}
+    <div class="alert alert-info">
+        {{ notice }}
+    </div>
+    {% endif %}
+    {% endblock %}
+
+
+    {% block content %}
+
+    {% endblock %}
+
+</body>

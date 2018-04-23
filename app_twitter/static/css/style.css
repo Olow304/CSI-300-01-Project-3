@@ -1,0 +1,33 @@
+body {
+    margin: 0;
+    background-color: #F5F8FA;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.navbar-default {
+    background-color: #fff;
+    margin: 0;
+}
+
+.jumbotron {
+    color: #fff;
+    background-image: linear-gradient(to right, #444, #a2cbe2);
+}
+
+textarea {
+    resize: vertical;
+}
+
+.nounderline {
+    text-decoration: none !important;
+}
+
+.alert {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+}
